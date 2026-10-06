@@ -4,7 +4,7 @@
     ],
     "objectscript.export.folder": "iris/src",
     "objectscript.conn": {
-        "active": true,
+        "active": false,
         "username": "superuser",
         "password": "SYS",
         "ns": "USER",
