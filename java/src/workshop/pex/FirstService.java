@@ -40,7 +40,7 @@ public class FirstService extends BusinessService {
         // assign some content to the FirstMessage value
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();  
-        myRequest.value = "Sent time: " + dtf.format(now) + " hola intersystems";
+        myRequest.value = "Sent time: " + dtf.format(now) + " bienvenido intersystems Gonzalo";
 
         // send FirtMessage to TargetConfigName using a 20s timeout:
         FirstMessage myResponse = (FirstMessage) SendRequestSync(TargetConfigName, myRequest, 20);
