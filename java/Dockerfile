@@ -9,7 +9,7 @@ ARG APP_HOME=/tmp/app
 COPY src $APP_HOME/src
 
 # copy iris pex libraries to $APP_HOME/jgw
-#COPY --from=intersystemsdc/jgw:latest /jgw/*.jar $APP_HOME/jgw/
+#COPY --from=intersystemsdc/jgw:latest /jgw/*.jar $APP_HOME/jgw/, no se ejecuta porque dicha imagen contiene una versión antigua de JDBC (3.6.1)
 COPY dist/*.jar $APP_HOME/jgw/
 
 # create $APP_HOME/jar
