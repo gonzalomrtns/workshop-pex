@@ -1,6 +1,6 @@
 ARG IMAGE=containers.intersystems.com/intersystems/iris-community:latest-em
 
-# ETAPA 1: JAVA BUILDER
+# STAGE 1: JAVA BUILDER
 
 FROM eclipse-temurin:8-jdk AS builder
 
@@ -21,7 +21,7 @@ WORKDIR $APP_HOME/src/
 RUN javac -classpath $APP_HOME/jar/*:$APP_HOME/jgw/* workshop/pex/*.java && \
     jar -cvf $APP_HOME/jar/FirstDemo.jar workshop/pex/*.class
 
-#ETAPA 2: Contrucción de la imagen de IRIS
+# STAGE 2: Build IRIS image
 FROM $IMAGE
 
 USER ${ISC_PACKAGE_MGRUSER}
@@ -38,7 +38,7 @@ COPY --from=builder \
     /tmp/app/jar/FirstDemo.jar /opt/pex/FirstDemo.jar
 
 
-#Configuración de IRIS y PEX 
+#IRIS and PEX Configuration 
 
 SHELL ["/irissession.sh"]
 
