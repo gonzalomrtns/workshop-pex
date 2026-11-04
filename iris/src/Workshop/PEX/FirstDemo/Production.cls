@@ -7,7 +7,7 @@ XData ProductionDefinition
   <Description>Una Proucción de Demo para PEX</Description>
   <ActorPoolSize>2</ActorPoolSize>
   <Setting Target="Adapter" Name="ShutdownTimeout">20</Setting>
-  <Item Name="FirstOperation" Category="" ClassName="EnsLib.PEX.BusinessOperation" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
+  <Item Name="FirstOperation" Category="" ClassName="EnsLib.PEX.BusinessOperation" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="true" Schedule="">
     <Setting Target="Host" Name="%remoteClassname">workshop.pex.FirstOperation</Setting>
     <Setting Target="Host" Name="%remoteSettings">CLIENTID=4</Setting>
     <Setting Target="Host" Name="%gatewayName">PEXJavaServer</Setting>
@@ -21,7 +21,7 @@ XData ProductionDefinition
     <Setting Target="Host" Name="%remoteSettings">TargetConfigName=FirstProcess</Setting>
     <Setting Target="Host" Name="%gatewayName">PEXJavaServer</Setting>
   </Item>
-  <Item Name="FirstProcess" Category="" ClassName="EnsLib.PEX.BusinessProcess" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+  <Item Name="FirstProcess" Category="" ClassName="EnsLib.PEX.BusinessProcess" PoolSize="1" Enabled="false" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="%remoteClassname">workshop.pex.FirstProcess</Setting>
     <Setting Target="Host" Name="%remoteSettings">Timeout=PT20S&#10;TargetConfigName=FirstOperation</Setting>
     <Setting Target="Host" Name="%gatewayName">PEXJavaServer</Setting>
