@@ -1,5 +1,8 @@
 # Workshop: PEX
-This repository contains the materials and some examples you can use to learn the basic concepts of PEX (Production EXtension) in IRIS Interoperability. 
+This repository contains the materials and some examples you can use to learn the basic concepts of PEX (Production EXtension) in IRIS Interoperability. Also this repository has been tested with the following OSs:
+
+* Mac OS
+* Windows
 
 You can find more in-depth information in https://learning.intersystems.com.
 
@@ -27,6 +30,11 @@ $ docker compose build
 ```
 docker compose up
 ```
+* Then copy the InterSystems Java libraries from the *iris* container, so VS Code can resolve the PEX classes when you edit the Java code. In a VS Code Terminal type:
+```console
+docker cp iris:/usr/irissys/dev/java/lib/1.8/. java/lib
+```
+> This copies the whole folder content, so it works regardless of the jar versions shipped with your IRIS image. The jars are git-ignored and [.vscode/settings.json](.vscode/settings.json) already adds `java/lib/*.jar` to the Java classpath (requires the [Extension Pack for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)).
 * Open the [Management Portal](http://localhost:52773/csp/sys/UtilHome.csp).
 * Login using the default `superuser`/ `SYS` account.
 * Click on [Workshop.PEX.FirstDemo.Production](http://localhost:52773/csp/user/EnsPortal.ProductionConfig.zen?PRODUCTION=Workshop.PEX.FirstDemo.Production&$NAMESPACE=USER) to access the sample interoperability production we will use. You can access also through *Interoperability > User > Configure > Production*.
@@ -48,7 +56,7 @@ docker compose up
   1) Compiling Java source code & building JAR files (`FirstDemo.jar`).
   2) Registering an External Language Server `PEXJavaServer` in IRIS, which starts and manages the Java Gateway process
   3) Loading the ObjectScript classes and setting the production to auto-start.
-* Notice that a dedicated `jgw` is no longer needed: the Java Gateway is handled by IRIS through an External Language Server (ELS). The IRIS image already includes a JDK 11 and the InterSystems Java libraries (`/usr/irissys/dev/java/lib/1.8/`, e.g. `intersystems-utils-4.2.2.jar`, which contains the PEX classes), so no builder stage or local jars are needed.
+* Notice that a dedicated `jgw` is no longer needed: the Java Gateway is handled by IRIS through an External Language Server (ELS). The IRIS image already includes a JDK 11 and the InterSystems Java libraries (`/usr/irissys/dev/java/lib/1.8/`, e.g. `intersystems-utils-<version>.jar`, which contains the PEX classes), so no builder stage is needed to build the image. The local copy in `java/lib` is only used by VS Code for editing.
 * Inspect [docker-compose.yml](docker-compose.yml) and notice the only container we are using. In this scenario the gateway hostname is the same as IRIS's hostname.
 
 <img src="img/workshop-pex-diagram.svg" width="600px">
